@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template-general.xhtml">
+
+	<ui:define name="titulo">
+    #{msgs.tituloOperacionListadoSemana}
+  </ui:define>
+
+	<ui:define name="cuerpo">
+		<h:form id="form">
+			<p:panel header="#{msgs.tituloListadoMain}" id="panelTable">
+				<p:dataTable var="vtask" id="tablalistadoMain" value="#{listadosController.tareasListSemana}" rows="8"
+					 border="1" paginator="true" editable="true" widgetVar="tasks"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     emptyMessage="#{msgs.tablaSinResultados}" 
+                     filteredValue="#{listadosController.tareasFiltrado}" >
+                     
+                    <p:ajax event="rowEdit" listener="#{listadosController.updateTask(vtask)}" update="@this" />
+                    
+					<p:column>
+						<f:facet name="header">#{msgs.tablaID}</f:facet>#{vtask.id}</p:column>
+					
+					<p:column headerText="#{msgs.tablaPlaneado}" sortBy="#{vtask.planned}">
+       					<p:cellEditor>
+			               <f:facet name="output"><h:outputText value="#{vtask.planned}" /></f:facet>
+			               <f:facet name="input">
+			               		<p:calendar id="popup" value="#{vtask.planned}" >
+			               			<p:ajax event="dateSelect" listener="#{listadosController.setDate(vtask, calendarView.date1)}"></p:ajax>
+			               		</p:calendar>
+			               </f:facet>
+           				</p:cellEditor>
+        			</p:column>
+						
+					<p:column filterBy="#{vtask.title}" headerText="#{msgs.tablaNombreTarea}" filterMatchMode="contains">
+           				<p:cellEditor>
+			               <f:facet name="output"><h:outputText value="#{vtask.title}" styleClass="#{vtask.finished ne null ? 'green' : null}" /></f:facet>
+			               <f:facet name="input"><p:inputText id="tittleInput" value="#{vtask.title}" /></f:facet>
+           				</p:cellEditor>
+        			</p:column>
+        			
+        			<p:column headerText="#{msgs.tablaComentarioTarea}" >
+           				<p:cellEditor>
+			               <f:facet name="output"><h:outputText value="#{vtask.comments}" /></f:facet>
+			               <f:facet name="input"><p:inputText id="commentInput" value="#{vtask.comments}" /></f:facet>
+           				</p:cellEditor>
+        			</p:column>
+        			
+					<p:column headerText="#{msgs.tablaCategoria}">
+						<p:cellEditor>
+               				<f:facet name="output"><h:outputText value="#{vtask.categoryId}" styleClass="#{vtask.planned le (listadosController.currentDate) ? 'red' : null}"/></f:facet>
+               				<f:facet name="input">
+                  				<h:selectOneMenu value="#{vtask.categoryId}" >
+                  					<f:selectItem itemLabel="none" itemValue="" />
+                       				<f:selectItems value="#{listadosController.listIds}" var="man" itemLabel="#{man}" itemValue="#{man}" />
+                  				</h:selectOneMenu>
+               				</f:facet>
+           				</p:cellEditor>
+					</p:column>
+					
+					<p:column headerText="#{msgs.tablaMarcarTerminado}">
+						<div align="center" draggable="false" >
+		                    <p:commandButton icon="ui-icon-trash"
+		                        actionListener="#{listadosController.markFinished(vtask)}"
+		                        ajax="false" />
+	                 	</div>
+                	</p:column>
+                	
+                	<p:column>
+          				<p:rowEditor id="editColumn">
+
+						</p:rowEditor>
+       				</p:column>
+                	
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-casa.xhtml" />
+	</ui:define>
+</ui:composition>

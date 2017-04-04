@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<p:panelGrid id="Grid" columns="2" cellpadding="5">
+  		#{msgs.titulo} 
+  		<h:panelGroup>
+			<p:inputText value="#{tarea.title}" required="true"
+				requiredMessage="#{msgs.formAlta_nombre_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_nombre_validatorMessage}"
+				id="nombre">
+				<f:validateLength maximum="20" />
+			</p:inputText>
+			<p:message for="nombre" />
+		</h:panelGroup>
+  
+	 	#{msgs.plannedDate} 
+	  	<h:panelGroup>
+       		<p:calendar id="inline" value="#{tarea.planned}" mode="inline" required="true" requiredMessage="#{msgs.formAlta_apellidos_requiredMessage}">
+       			<p:ajax event="dateSelect" listener="#{listadosController.setDate(tarea, calendarView.date2)}"></p:ajax>
+       		</p:calendar>
+			<p:message for="inline" />
+		</h:panelGroup>
+  
+  		#{msgs.category}
+  		<h:panelGroup>
+			<h:selectOneMenu id="categoryId" value="#{tarea.categoryId}" >
+				<f:selectItem itemLabel="none" itemValue="" />
+    			<f:selectItems value="#{listadosController.listIds}" var="man" itemLabel="#{man}" itemValue="#{man}" />
+			</h:selectOneMenu>
+			<p:message for="categoryId" />
+		</h:panelGroup>  
+  
+		<p:commandButton value="#{msgs.botonSalvar}"
+			action="#{listadosController.salva}" update="Grid" process="@form" id="botonEntrar">
+		</p:commandButton>
+	</p:panelGrid>
+</ui:composition>

@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<p:panelGrid id="Grid" columns="2" cellpadding="5">
+  #{msgs.nombre}
+  <h:panelGroup>
+			<p:inputText value="#{logController.login}" required="true"
+				requiredMessage="#{msgs.formAlta_nombre_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_nombre_validatorMessage}"
+				id="login">
+				<f:validateLength maximum="20" />
+			</p:inputText>
+			<p:message for="login" />
+		</h:panelGroup>
+  
+  #{msgs.correo}
+  <h:panelGroup>
+			<p:inputText value="#{logController.email}" required="true"
+				requiredMessage="#{msgs.formAlta_correo_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_correo_validatorMessage}"
+				id="email">
+				<f:validateRegex pattern=".+@.+\.[a-z]+" />
+			</p:inputText>
+			<p:message for="email" />
+		</h:panelGroup>
+  
+  #{msgs.contra}
+  <h:panelGroup>
+			<p:password value="#{logController.password}" required="true"
+				requiredMessage="#{msgs.formAlta_contra_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_contra_validatorMessage}"
+				id="password">
+				<f:validateLength minimum="8"/>
+			</p:password>
+			<p:message for="password" />
+		</h:panelGroup>
+  
+  #{msgs.repiteContra}
+  <h:panelGroup>
+			<p:password value="#{logController.password2}" required="true"
+				requiredMessage="#{msgs.formAlta_contra_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_contra_validatorMessage}"
+				id="password2">
+				<f:validateLength minimum="8"/>
+			</p:password>
+			<p:message for="password2"/>
+		</h:panelGroup>
+		
+		<h:outputText id="msgAlta" value="#{msgs[logController.message]}" />
+		<p:commandButton value="#{msgs.botonSalvar}"
+			action="#{logController.salva}" update="Grid" process="@form">
+		</p:commandButton>
+	
+	</p:panelGrid>
+</ui:composition>
