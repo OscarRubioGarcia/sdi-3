@@ -69,4 +69,8 @@ public class JdbcHelper {
 		if (con != null) {try{ con.close(); } catch (Exception ex){}};
 	}
 
+	public void close(ResultSet rs) {
+		if (rs != null) { try{ rs.close(); } catch (Exception ex){}};
+	}
+
 }

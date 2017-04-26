@@ -25,8 +25,9 @@ public class JdbcTemplate {
 
 	private Object generatedKey;
 	
-	private static String CONFIG_FILE = "/database.properties";
-	private JdbcHelper jdbc = new JdbcHelper(CONFIG_FILE);
+	//private static String CONFIG_FILE = "/database.properties";
+	private static String CONFIG_FILE = "/sql_queries.properties";
+	private JdbcHelper helper = new JdbcHelper(CONFIG_FILE);
 
 	/**
 	 * Template method to execute INSERT, UPDATE and DELETE DML statements.
@@ -39,13 +40,14 @@ public class JdbcTemplate {
 	 * @return the number of affected rows
 	 */
 	public int execute(String queryKey, Object... args) {
-		String sql = Jdbc.getSqlQuery(queryKey);
+		//String sql = Jdbc.getSqlQuery(queryKey);
+		String sql = helper.getSql(queryKey);
 
 		Connection con = null;
 		PreparedStatement ps =  null;
 		try {
-			//con = jdbc.createConnection();
-			con = Jdbc.getCurrentConnection();
+			//con = Jdbc.getCurrentConnection();
+			con = helper.createConnection();
 			ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			bindSqlParameters(args, ps);
 
@@ -56,8 +58,8 @@ public class JdbcTemplate {
 		} catch (SQLException e) {
 			throw new PersistenceException("Invalid SQL or database schema", e);
 		} finally {
-			//jdbc.close(ps, con);
-			Jdbc.close(ps, con);
+			helper.close(ps, con);
+			//Jdbc.close(ps, con);
 		}
 	}
 
@@ -71,14 +73,15 @@ public class JdbcTemplate {
 	 * @return the object of type T retrieved from the row
 	 */
 	public <T> T queryForObject(String queryKey, RowMapper<T> mapper, Object... args) {
-		String sql = Jdbc.getSqlQuery(queryKey);
+		//String sql = Jdbc.getSqlQuery(queryKey);
+		String sql = helper.getSql(queryKey);
 
 		Connection con = null;
 		PreparedStatement ps =  null;
 		ResultSet rs = null;
 		try {
-			//con = jdbc.createConnection();
-			con = Jdbc.getCurrentConnection();
+			//con = Jdbc.getCurrentConnection();
+			con = helper.createConnection();
 			ps = con.prepareStatement(sql);
 			bindSqlParameters(args, ps);
 			rs = ps.executeQuery();
@@ -88,8 +91,8 @@ public class JdbcTemplate {
 		} catch (SQLException e) {
 			throw new PersistenceException("Invalid SQL or database schema", e);
 		} finally {
-			//jdbc.close(ps, rs, con);
-			Jdbc.close(rs, ps, con);
+			helper.close(ps, rs, con);
+			//Jdbc.close(rs, ps, con);
 		}
 	}
 
@@ -104,14 +107,15 @@ public class JdbcTemplate {
 	public <T> List<T> queryForList(
 			String queryKey, RowMapper<T> mapper, Object... args) {
 		
-		String sql = Jdbc.getSqlQuery(queryKey);
+		//String sql = Jdbc.getSqlQuery(queryKey);
+		String sql = helper.getSql(queryKey);
 
 		Connection con = null;
 		PreparedStatement ps =  null;
 		ResultSet rs = null;
 		try {
-			//con = jdbc.createConnection();
-			con = Jdbc.getCurrentConnection();
+			con = helper.createConnection();
+			//con = Jdbc.getCurrentConnection();
 			ps = con.prepareStatement(sql);
 			bindSqlParameters(args, ps);
 			rs = ps.executeQuery();
@@ -125,8 +129,8 @@ public class JdbcTemplate {
 		} catch (SQLException e) {
 			throw new PersistenceException("Invalid SQL or database schema", e);
 		} finally {
-			//jdbc.close(ps, rs, con);
-			Jdbc.close(rs, ps, con);
+			helper.close(ps, rs, con);
+			//Jdbc.close(rs, ps, con);
 		}
 	}
 
@@ -151,7 +155,8 @@ public class JdbcTemplate {
 			}
 		}
 		finally {
-			Jdbc.close( rs );
+			//Jdbc.close( rs );
+			helper.close(rs);
 		}
 	}
 

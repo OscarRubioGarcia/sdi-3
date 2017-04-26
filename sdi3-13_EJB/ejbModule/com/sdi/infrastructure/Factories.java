@@ -1,9 +1,7 @@
 package com.sdi.infrastructure;
 
 import com.sdi.business.ServicesFactory;
-import com.sdi.business.impl.LocalEjbServicesLocator;
 import com.sdi.persistence.PersistenceFactory;
-import com.sdi.persistence.impl.SimplePersistenceFactory;
 
 /**
  * Esta clase es la que realemente relaciona las interfaces de las capas 
@@ -26,8 +24,18 @@ import com.sdi.persistence.impl.SimplePersistenceFactory;
 public class Factories {
 
 	//public static ServicesFactory services = new SimpleServicesFactory();
-	public static ServicesFactory services = new LocalEjbServicesLocator();
+	//public static ServicesFactory services = new LocalEjbServicesLocator();
+	//public static PersistenceFactory persistence = new SimplePersistenceFactory();
 	
-	public static PersistenceFactory persistence = new SimplePersistenceFactory();
+	private static String CONFIG_FILE = "/factories.properties";
+	
+	public static ServicesFactory services = (ServicesFactory)
+			FactoriesHelper.createFactory(CONFIG_FILE, "SERVICES_FACTORY");
+	public static ServicesFactory remoteServices = (ServicesFactory)
+			FactoriesHelper.createFactory(CONFIG_FILE, "REMOTE_SERVICES_FACTORY");
+	
+	public static PersistenceFactory persistence = (PersistenceFactory)
+			FactoriesHelper.createFactory(CONFIG_FILE, "PERSISTENCE_FACTORY");
+	
 
 }
