@@ -3,6 +3,7 @@ package com.sdi.business.impl;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.jws.WebService;
 
 import com.sdi.business.exception.BusinessException;
 import com.sdi.business.exception.EntityAlreadyExistsException;
@@ -16,6 +17,7 @@ import com.sdi.model.Category;
  * Session Bean implementation class EjbCategoryService
  */
 @Stateless
+@WebService(name="CategoryService")
 public class EjbCategoryService implements RemoteCategoryService, LocalCategoryService {
 
     public EjbCategoryService() {

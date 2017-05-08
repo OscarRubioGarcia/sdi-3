@@ -3,6 +3,7 @@ package com.sdi.business.impl;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.jws.WebService;
 
 import com.sdi.business.exception.BusinessException;
 import com.sdi.business.exception.EntityAlreadyExistsException;
@@ -17,6 +18,7 @@ import com.sdi.model.User;
  * Session Bean implementation class EjbUserService
  */
 @Stateless
+@WebService(name="UserService")
 public class EjbUserService implements RemoteUserService, LocalUserService {
 
     public EjbUserService() {

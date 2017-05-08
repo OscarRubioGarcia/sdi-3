@@ -3,6 +3,7 @@ package com.sdi.business.impl;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.jws.WebService;
 
 import com.sdi.business.exception.EntityAlreadyExistsException;
 import com.sdi.business.exception.EntityNotFoundException;
@@ -17,6 +18,7 @@ import com.sdi.model.Task;
  * Session Bean implementation class EjbTaskService
  */
 @Stateless
+@WebService(name="TaskService")
 public class EjbTaskService implements RemoteTaskService, LocalTaskService {
 
     public EjbTaskService() {
