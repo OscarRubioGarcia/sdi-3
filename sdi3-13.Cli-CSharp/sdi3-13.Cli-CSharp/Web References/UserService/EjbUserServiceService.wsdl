@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://impl.business.sdi.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EjbUserServiceService" targetNamespace="http://impl.business.sdi.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://impl.business.sdi.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="deleteUser" type="tns:deleteUser" />
+      <xs:element name="deleteUserResponse" type="tns:deleteUserResponse" />
+      <xs:element name="disableUser" type="tns:disableUser" />
+      <xs:element name="disableUserResponse" type="tns:disableUserResponse" />
+      <xs:element name="enableUser" type="tns:enableUser" />
+      <xs:element name="enableUserResponse" type="tns:enableUserResponse" />
+      <xs:element name="exists" type="tns:exists" />
+      <xs:element name="existsResponse" type="tns:existsResponse" />
+      <xs:element name="find" type="tns:find" />
+      <xs:element name="findAdmin" type="tns:findAdmin" />
+      <xs:element name="findAdminResponse" type="tns:findAdminResponse" />
+      <xs:element name="findLoggable" type="tns:findLoggable" />
+      <xs:element name="findLoggableResponse" type="tns:findLoggableResponse" />
+      <xs:element name="findResponse" type="tns:findResponse" />
+      <xs:element name="forceSave" type="tns:forceSave" />
+      <xs:element name="forceSaveResponse" type="tns:forceSaveResponse" />
+      <xs:element name="listUsers" type="tns:listUsers" />
+      <xs:element name="listUsersResponse" type="tns:listUsersResponse" />
+      <xs:element name="save" type="tns:save" />
+      <xs:element name="saveResponse" type="tns:saveResponse" />
+      <xs:element name="update" type="tns:update" />
+      <xs:element name="updateResponse" type="tns:updateResponse" />
+      <xs:complexType name="findLoggable">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findLoggableResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="user">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="id" type="xs:long" />
+          <xs:element minOccurs="0" name="isAdmin" type="xs:boolean" />
+          <xs:element minOccurs="0" name="login" type="xs:string" />
+          <xs:element minOccurs="0" name="password" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="tns:userStatus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="disableUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="disableUserResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="forceSave">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="forceSaveResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAdmin">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAdminResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="save">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="saveResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="listUsers">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="listUsersResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="enableUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="enableUserResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="find">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exists">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="existsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="update">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="deleteUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteUserResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:simpleType name="userStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ENABLED" />
+          <xs:enumeration value="DISABLED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="EntityNotFoundException" type="tns:EntityNotFoundException" />
+      <xs:complexType name="EntityNotFoundException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BusinessException" type="tns:BusinessException" />
+      <xs:complexType name="BusinessException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="EntityAlreadyExistsException" type="tns:EntityAlreadyExistsException" />
+      <xs:complexType name="EntityAlreadyExistsException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="listUsersResponse">
+    <wsdl:part name="parameters" element="tns:listUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="disableUserResponse">
+    <wsdl:part name="parameters" element="tns:disableUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAdminResponse">
+    <wsdl:part name="parameters" element="tns:findAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="EntityNotFoundException">
+    <wsdl:part name="EntityNotFoundException" element="tns:EntityNotFoundException" />
+  </wsdl:message>
+  <wsdl:message name="disableUser">
+    <wsdl:part name="parameters" element="tns:disableUser" />
+  </wsdl:message>
+  <wsdl:message name="enableUser">
+    <wsdl:part name="parameters" element="tns:enableUser" />
+  </wsdl:message>
+  <wsdl:message name="EntityAlreadyExistsException">
+    <wsdl:part name="EntityAlreadyExistsException" element="tns:EntityAlreadyExistsException" />
+  </wsdl:message>
+  <wsdl:message name="findLoggableResponse">
+    <wsdl:part name="parameters" element="tns:findLoggableResponse" />
+  </wsdl:message>
+  <wsdl:message name="forceSave">
+    <wsdl:part name="parameters" element="tns:forceSave" />
+  </wsdl:message>
+  <wsdl:message name="deleteUser">
+    <wsdl:part name="parameters" element="tns:deleteUser" />
+  </wsdl:message>
+  <wsdl:message name="exists">
+    <wsdl:part name="parameters" element="tns:exists" />
+  </wsdl:message>
+  <wsdl:message name="findAdmin">
+    <wsdl:part name="parameters" element="tns:findAdmin" />
+  </wsdl:message>
+  <wsdl:message name="forceSaveResponse">
+    <wsdl:part name="parameters" element="tns:forceSaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="findLoggable">
+    <wsdl:part name="parameters" element="tns:findLoggable" />
+  </wsdl:message>
+  <wsdl:message name="BusinessException">
+    <wsdl:part name="BusinessException" element="tns:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="listUsers">
+    <wsdl:part name="parameters" element="tns:listUsers" />
+  </wsdl:message>
+  <wsdl:message name="existsResponse">
+    <wsdl:part name="parameters" element="tns:existsResponse" />
+  </wsdl:message>
+  <wsdl:message name="update">
+    <wsdl:part name="parameters" element="tns:update" />
+  </wsdl:message>
+  <wsdl:message name="save">
+    <wsdl:part name="parameters" element="tns:save" />
+  </wsdl:message>
+  <wsdl:message name="findResponse">
+    <wsdl:part name="parameters" element="tns:findResponse" />
+  </wsdl:message>
+  <wsdl:message name="find">
+    <wsdl:part name="parameters" element="tns:find" />
+  </wsdl:message>
+  <wsdl:message name="enableUserResponse">
+    <wsdl:part name="parameters" element="tns:enableUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteUserResponse">
+    <wsdl:part name="parameters" element="tns:deleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateResponse">
+    <wsdl:part name="parameters" element="tns:updateResponse" />
+  </wsdl:message>
+  <wsdl:message name="saveResponse">
+    <wsdl:part name="parameters" element="tns:saveResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UserService">
+    <wsdl:operation name="findLoggable">
+      <wsdl:input name="findLoggable" message="tns:findLoggable" />
+      <wsdl:output name="findLoggableResponse" message="tns:findLoggableResponse" />
+      <wsdl:fault name="EntityNotFoundException" message="tns:EntityNotFoundException" />
+    </wsdl:operation>
+    <wsdl:operation name="disableUser">
+      <wsdl:input name="disableUser" message="tns:disableUser" />
+      <wsdl:output name="disableUserResponse" message="tns:disableUserResponse" />
+      <wsdl:fault name="BusinessException" message="tns:BusinessException" />
+      <wsdl:fault name="EntityNotFoundException" message="tns:EntityNotFoundException" />
+    </wsdl:operation>
+    <wsdl:operation name="forceSave">
+      <wsdl:input name="forceSave" message="tns:forceSave" />
+      <wsdl:output name="forceSaveResponse" message="tns:forceSaveResponse" />
+      <wsdl:fault name="BusinessException" message="tns:BusinessException" />
+      <wsdl:fault name="EntityAlreadyExistsException" message="tns:EntityAlreadyExistsException" />
+    </wsdl:operation>
+    <wsdl:operation name="findAdmin">
+      <wsdl:input name="findAdmin" message="tns:findAdmin" />
+      <wsdl:output name="findAdminResponse" message="tns:findAdminResponse" />
+      <wsdl:fault name="EntityNotFoundException" message="tns:EntityNotFoundException" />
+    </wsdl:operation>
+    <wsdl:operation name="save">
+      <wsdl:input name="save" message="tns:save" />
+      <wsdl:output name="saveResponse" message="tns:saveResponse" />
+      <wsdl:fault name="BusinessException" message="tns:BusinessException" />
+      <wsdl:fault name="EntityAlreadyExistsException" message="tns:EntityAlreadyExistsException" />
+    </wsdl:operation>
+    <wsdl:operation name="listUsers">
+      <wsdl:input name="listUsers" message="tns:listUsers" />
+      <wsdl:output name="listUsersResponse" message="tns:listUsersResponse" />
+      <wsdl:fault name="BusinessException" message="tns:BusinessException" />
+    </wsdl:operation>
+    <wsdl:operation name="enableUser">
+      <wsdl:input name="enableUser" message="tns:enableUser" />
+      <wsdl:output name="enableUserResponse" message="tns:enableUserResponse" />
+      <wsdl:fault name="BusinessException" message="tns:BusinessException" />
+      <wsdl:fault name="EntityNotFoundException" message="tns:EntityNotFoundException" />
+    </wsdl:operation>
+    <wsdl:operation name="find">
+      <wsdl:input name="find" message="tns:find" />
+      <wsdl:output name="findResponse" message="tns:findResponse" />
+      <wsdl:fault name="EntityNotFoundException" message="tns:EntityNotFoundException" />
+    </wsdl:operation>
+    <wsdl:operation name="exists">
+      <wsdl:input name="exists" message="tns:exists" />
+      <wsdl:output name="existsResponse" message="tns:existsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <wsdl:input name="update" message="tns:update" />
+      <wsdl:output name="updateResponse" message="tns:updateResponse" />
+      <wsdl:fault name="EntityNotFoundException" message="tns:EntityNotFoundException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteUser">
+      <wsdl:input name="deleteUser" message="tns:deleteUser" />
+      <wsdl:output name="deleteUserResponse" message="tns:deleteUserResponse" />
+      <wsdl:fault name="EntityNotFoundException" message="tns:EntityNotFoundException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EjbUserServiceServiceSoapBinding" type="tns:UserService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="findLoggable">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findLoggable">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findLoggableResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EntityNotFoundException">
+        <soap:fault use="literal" name="EntityNotFoundException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="disableUser">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="disableUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="disableUserResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessException">
+        <soap:fault use="literal" name="BusinessException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="EntityNotFoundException">
+        <soap:fault use="literal" name="EntityNotFoundException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceSave">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="forceSave">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="forceSaveResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessException">
+        <soap:fault use="literal" name="BusinessException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="EntityAlreadyExistsException">
+        <soap:fault use="literal" name="EntityAlreadyExistsException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findAdmin">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findAdmin">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findAdminResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EntityNotFoundException">
+        <soap:fault use="literal" name="EntityNotFoundException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="save">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="save">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="saveResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessException">
+        <soap:fault use="literal" name="BusinessException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="EntityAlreadyExistsException">
+        <soap:fault use="literal" name="EntityAlreadyExistsException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listUsers">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="listUsers">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="listUsersResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessException">
+        <soap:fault use="literal" name="BusinessException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="enableUser">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="enableUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="enableUserResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessException">
+        <soap:fault use="literal" name="BusinessException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="EntityNotFoundException">
+        <soap:fault use="literal" name="EntityNotFoundException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="find">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="find">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EntityNotFoundException">
+        <soap:fault use="literal" name="EntityNotFoundException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="exists">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="exists">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="existsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUser">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="deleteUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteUserResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EntityNotFoundException">
+        <soap:fault use="literal" name="EntityNotFoundException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="update">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EntityNotFoundException">
+        <soap:fault use="literal" name="EntityNotFoundException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EjbUserServiceService">
+    <wsdl:port name="UserServicePort" binding="tns:EjbUserServiceServiceSoapBinding">
+      <soap:address location="http://W7:8280/sdi3-13_EJB/UserService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
