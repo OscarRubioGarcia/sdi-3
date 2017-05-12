@@ -2,6 +2,10 @@ package com.sdi.model;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "category")
 public class Category implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -20,10 +24,12 @@ public class Category implements Serializable{
 		this.userId = userId;
 	}
 
+	@XmlElement
 	public String getName() {
 		return name;
 	}
 
+	@XmlElement
 	public Long getId() {
 		return id;
 	}
@@ -36,6 +42,7 @@ public class Category implements Serializable{
 		this.name = name;
 	}
 
+	@XmlElement
 	public Long getUserId() {
 		return userId;
 	}
