@@ -12,6 +12,7 @@ import com.sdi.business.impl.classes.tasks.TasksBaja;
 import com.sdi.business.impl.classes.tasks.TasksBuscar;
 import com.sdi.business.impl.classes.tasks.TasksListado;
 import com.sdi.business.impl.classes.tasks.TasksUpdate;
+import com.sdi.business.integration.*;
 import com.sdi.model.Task;
 
 /**
@@ -21,6 +22,8 @@ import com.sdi.model.Task;
 @WebService(name="TaskService")
 public class EjbTaskService implements RemoteTaskService, LocalTaskService {
 
+	Auditor audit = new AuditorEJB();
+	
     public EjbTaskService() {
     }
     
@@ -41,6 +44,7 @@ public class EjbTaskService implements RemoteTaskService, LocalTaskService {
 
 	@Override
 	public List<Task> getTareasByUserIdToday(Long id) throws Exception {
+		audit.audit("getTasksByUserIdToday( " + id + " )");
 		return new TasksListado().getTasksByUserIdToday(id);
 	}
 
@@ -51,6 +55,7 @@ public class EjbTaskService implements RemoteTaskService, LocalTaskService {
 	
 	@Override
 	public List<Task> getTareasByUserIdInbox(Long id) throws Exception {
+		audit.audit("getTasksByUserIdInbox( " + id + " )");
 		return new TasksListado().getTasksByUserIdInbox(id);
 	}
 	
