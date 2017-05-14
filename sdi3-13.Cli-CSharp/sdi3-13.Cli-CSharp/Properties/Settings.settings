@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="sdi3_13.Cli_CSharp.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="sdi3_13_Cli_CSharp_UserService_EjbUserServiceService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://W7:8280/sdi3-13_EJB/UserService</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>

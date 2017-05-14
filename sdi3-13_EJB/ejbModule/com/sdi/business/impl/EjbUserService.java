@@ -83,4 +83,9 @@ public class EjbUserService implements RemoteUserService, LocalUserService {
 		return new UsersAlta().forceSave(user);
 	}
 
+	@Override
+	public List<User> allUsersInfoAndTasks() {
+		return new UsersListado().getAllUsersAndTasks();
+	}
+
 }

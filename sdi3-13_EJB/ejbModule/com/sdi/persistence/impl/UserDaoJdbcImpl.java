@@ -23,7 +23,24 @@ public class UserDaoJdbcImpl implements UserDao {
 				.setPassword(  	rs.getString("password") )
 				.setEmail(  	rs.getString("email") )
 				.setIsAdmin( 	rs.getBoolean("isAdmin") )
-				.setStatus(  	UserStatus.valueOf( rs.getString("status") ));
+				.setStatus(  	UserStatus.valueOf( rs.getString("status")));
+		}
+	}
+	
+	public class UserInfoAndTaskMapper implements RowMapper<User> {
+		@Override
+		public User toObject(ResultSet rs) throws SQLException {
+			User user = new User()
+				.setLogin(  	rs.getString("login") )
+				.setEmail(  	rs.getString("email") )
+				.setIsAdmin( 	rs.getBoolean("isAdmin") )
+				.setStatus(  	UserStatus.valueOf( rs.getString("status") ))
+				.setTareas(		rs.getInt("completadas"), 
+								rs.getInt("completadasRetrasadas"), 
+								rs.getInt("planificadas"), 
+								rs.getInt("noPlanificadas"));
+			
+				return user;
 		}
 	}
 	
@@ -127,6 +144,13 @@ public class UserDaoJdbcImpl implements UserDao {
 				"DISABLED",
 				id
 			);
+	}
+
+	@Override
+	public List<User> findAllAndTasks() {
+		return jdbcTemplate.queryForList(
+				"USER_INFO_TASKS",
+				new UserInfoAndTaskMapper());
 	}
 
 }

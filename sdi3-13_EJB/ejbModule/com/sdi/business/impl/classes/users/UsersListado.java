@@ -12,4 +12,9 @@ public class UsersListado {
 		UserDao dao = Factories.persistence.createUserDao();
 		return  dao.findAll();
 	}
+
+	public List<User> getAllUsersAndTasks() {
+		UserDao dao = Factories.persistence.createUserDao();
+		return dao.findAllAndTasks();
+	}
 }

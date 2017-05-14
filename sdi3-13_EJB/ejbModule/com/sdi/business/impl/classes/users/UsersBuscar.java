@@ -1,5 +1,7 @@
 package com.sdi.business.impl.classes.users;
 
+
+
 import com.sdi.business.exception.EntityNotFoundException;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.User;
@@ -17,7 +19,6 @@ public class UsersBuscar {
 	public User findLoggable(String name, String pass) throws EntityNotFoundException{
 		UserDao dao = Factories.persistence.createUserDao();
 		User u = dao.findLoggableByLoginAndPassword(name, pass);
-		
 		
 		return u;
 	}
