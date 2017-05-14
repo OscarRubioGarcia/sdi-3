@@ -1,0 +1,12 @@
+c:\users\nombre\documents\visual studio 2017\Projects\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\bin\Debug\sdi3-13.Cli-CSharp.exe.config
+c:\users\nombre\documents\visual studio 2017\Projects\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\bin\Debug\sdi3-13.Cli-CSharp.exe
+c:\users\nombre\documents\visual studio 2017\Projects\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\bin\Debug\sdi3-13.Cli-CSharp.pdb
+c:\users\nombre\documents\visual studio 2017\Projects\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\obj\Debug\sdi3-13.Cli-CSharp.csprojResolveAssemblyReference.cache
+c:\users\nombre\documents\visual studio 2017\Projects\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\obj\Debug\sdi3-13.Cli-CSharp.exe
+c:\users\nombre\documents\visual studio 2017\Projects\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\obj\Debug\sdi3-13.Cli-CSharp.pdb
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\bin\Debug\sdi3-13.Cli-CSharp.exe.config
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\bin\Debug\sdi3-13.Cli-CSharp.exe
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\bin\Debug\sdi3-13.Cli-CSharp.pdb
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\obj\Debug\sdi3-13.Cli-CSharp.csprojResolveAssemblyReference.cache
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\obj\Debug\sdi3-13.Cli-CSharp.exe
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\obj\Debug\sdi3-13.Cli-CSharp.pdb
