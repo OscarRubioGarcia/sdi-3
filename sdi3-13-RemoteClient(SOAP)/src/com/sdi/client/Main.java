@@ -29,13 +29,13 @@ public class Main {
 	}
 		
 	private void run() throws Exception {
-		System.out.println("Bienvenido a GTD Task Manager \nSomos Óscar el "
-				+ "Payaso y Christian el Apuesto, tus hosts\nPor favor, elige "
-				+ "una de las opciones siguientes o escribe exit para salir:\n"
+		System.out.println("Bienvenido a GTD Task Manager \nSomos Óscar y "
+				+ "Christian, tus hosts\nPor favor, elige una de las opciones "
+				+ "siguientes o escribe exit para salir o volver al menú:\n"
 				+ "---------------");
 		String opcion="";
 		
-		while (!"exit".equals(opcion)){
+		while (true){
 			System.out.println("");
 			//currentMenu.showOptions();
 			System.out.println("1: Listar usuarios del sistema (y tareas)\n"
@@ -52,6 +52,8 @@ public class Main {
 				deleteUser();
 			else if("4".equals(opcion))
 				enableUser();
+			else if("exit".equals(opcion))
+				break;
 			else
 				System.out.println("Esa opción no es válida");
 		}
@@ -75,12 +77,20 @@ public class Main {
 		UserService service = new EjbUserServiceService().getUserServicePort();
 		String opcion = "";
 		
-		System.out.println("Introduce el id del usuario que desees deshabilitar");
-		opcion = console.readLine();
+		while(true)
+			try{
+				System.out.println("Introduce el id del usuario que desees "
+									+ "deshabilitar");
+				opcion = console.readLine();
 		
-		if ("exit".equals(opcion)) return;
+				if ("exit".equals(opcion)) return;
 		
-		service.disableUser((long) Integer.parseInt(opcion));
+				service.disableUser((long) Integer.parseInt(opcion));
+				
+				return;
+			}catch(NumberFormatException nfe){
+				System.out.println("Type a number, please");
+			}
 	}
 	
 	/**
@@ -97,12 +107,20 @@ public class Main {
 		UserService service = new EjbUserServiceService().getUserServicePort();
 		String opcion = "";
 		
-		System.out.println("Introduce el id del usuario que desees deshabilitar");
-		opcion = console.readLine();
+		while(true)
+			try{
+				System.out.println("Introduce el id del usuario que desees "
+									+ "habilitar");
+				opcion = console.readLine();
 		
-		if ("exit".equals(opcion)) return;
+				if ("exit".equals(opcion)) return;
 		
-		service.disableUser((long) Integer.parseInt(opcion));
+				service.enableUser((long) Integer.parseInt(opcion));
+				
+				return;
+			}catch(NumberFormatException nfe){
+				System.out.println("Type a number, please");
+			}
 	}
 	/**
 	 * Elimina de la base de datos todo rastro del ususario (datos personales,
@@ -141,7 +159,7 @@ public class Main {
 			System.out.println(user.getLogin() + " - " + user.getEmail()
 					+ " - " + user.getStatus() + " - " + user.isIsAdmin()
 					+ "\n\t--" + user.getTareas().get(0) + " tareas completadas"
-					+ "\n\t  --" + user.getTareas().get(1) + " de ellas con retraso"
+					+ "\n\t--" + user.getTareas().get(1) + " de ellas con retraso"
 					+ "\n\t--" + user.getTareas().get(2) + " planificadas"
 					+ "\n\t--" + user.getTareas().get(3) + " sin planificar");
 			System.out.println(userBuilder.toString());
@@ -193,6 +211,8 @@ public class Main {
 		}
 	}
 	private void printLine(User a) {
-		System.out.println(a.getId() + " - " + a.getEmail() + " - " + a.getLogin() + " - " + a.getPassword() + " - " + a.getStatus());
+		System.out.println(a.getId() + " - " + a.getEmail() + " - " 
+							+ a.getLogin() + " - " + a.getPassword() 
+							+ " - " + a.getStatus());
 	}
 }
