@@ -166,4 +166,31 @@ public class TaskDaoJdbcImpl implements TaskDao {
 		
 	}
 
+	@Override
+	public List<Task> findLateTasksByUserId(Long id) {
+		return jdbcTemplate.queryForList(
+				"TASK_FIND_LATE_BY_USER_ID", 
+				new TaskDtoMapper(),
+				id
+			);
+	}
+
+	@Override
+	public List<Task> findOnlyTodayTasksByUserId(Long id) {
+		return jdbcTemplate.queryForList(
+				"TASK_FIND_TODAY_ONLY_BY_USER_ID", 
+				new TaskDtoMapper(),
+				id
+			);
+	}
+
+	@Override
+	public List<Task> findLateAndPendingTasks(Long id) {
+		return jdbcTemplate.queryForList(
+				"TASK_FIND_LATE_AND_PENDING_USER_ID", 
+				new TaskDtoMapper(),
+				id
+			);
+	}
+
 }

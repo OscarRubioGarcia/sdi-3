@@ -23,7 +23,7 @@ public class BaseDeDatos {
 		List<User> usuarios = buser.getUsersList();
 		
 		for (User user : usuarios)
-			if (!"admin1".equals(user.getLogin())){
+			if (!"admin".equals(user.getLogin())){
 				buser.preBaja(user);
 				buser.baja();}
 	}

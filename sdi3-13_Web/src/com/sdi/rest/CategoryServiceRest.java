@@ -24,7 +24,7 @@ public interface CategoryServiceRest {
 	public int deleteAllByUserId(@PathParam("id") Long id) throws BusinessException, EntityNotFoundException;
 
 	@GET 
-	@Path("/AllTasksByUserId/{id}")
+	@Path("/find/{id}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	List<Category> getAllCategoriesForUser(@PathParam("id") Long id) throws BusinessException, EntityNotFoundException;
 

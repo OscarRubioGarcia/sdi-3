@@ -1,10 +1,18 @@
 package com.messaging.simulator;
 
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
 import javax.jms.MapMessage;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 
+@MessageDriven(
+		activationConfig = {
+			@ActivationConfigProperty(
+				propertyName = "destination",
+				propertyValue = "queue/SDI3AuditQueue")
+	})
 public class SDI3AuditMessageListener implements MessageListener{
 
 	@Override
@@ -25,11 +33,37 @@ public class SDI3AuditMessageListener implements MessageListener{
 		
 		//Aqui cojo las tareas 1 a 1 y las pinto
 		MapMessage mmsg = (MapMessage) msg;
-		System.out.println("New Operation");
-		System.out.println("\tuser: " + mmsg.getString("user"));
-		System.out.println("\toper: " + mmsg.getString("operation"));
-		System.out.println("\tdate: " + mmsg.getString("date"));
-		System.out.println(mmsg.getJMSMessageID());
+		
+		if(mmsg.getString("command").equals("viewToday")) {
+			
+			System.out.print(mmsg.getLong("taskId"));
+			System.out.print("\t " + mmsg.getString("title"));
+			System.out.print("\t " + mmsg.getString("comments"));
+			System.out.print("\t " + mmsg.getString("planned"));
+			System.out.print("\t " + mmsg.getString("created"));
+			System.out.print("\t " + mmsg.getString("finished"));
+			System.out.print("\t " + mmsg.getString("categoryId"));
+			
+			System.out.print("\t " + mmsg.getLong("userId"));
+			System.out.println("");
+			
+		} else if(mmsg.getString("command").equals("viewLate")) {
+			
+			System.out.print(mmsg.getLong("taskId"));
+			System.out.print("\t " + mmsg.getString("title"));
+			System.out.print("\t " + mmsg.getString("comments"));
+			System.out.print("\t " + mmsg.getString("planned"));
+			System.out.print("\t " + mmsg.getString("created"));
+			System.out.print("\t " + mmsg.getString("finished"));
+			System.out.print("\t " + mmsg.getString("categoryId"));
+			System.out.print("\t " + mmsg.getLong("userId"));
+			System.out.println("");
+			
+		} else {
+			System.out.println("Unknown task commmand " + mmsg.getString("command"));
+		}
+		
+		
 	}
 
 }

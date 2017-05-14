@@ -80,9 +80,17 @@ public class Main {
 				
 			} else if(input.equals("2")) {
 				//Today
+				System.out.println("Todays Tasks");
+				System.out.println("ID \t title \t comments \t planned \t created \t finished \t categoryID \t userId");
+				initializeConsumer();
+				
+				msg = session.createMapMessage();
+				msg.setString("credential-login", login);
+				msg.setString("credential-password", password);
+				msg.setString("command", "viewToday");
+				sender.send(msg);
 				
 				//send message then initialize consumer
-				initializeConsumer();
 				System.out.println("Input any number or letter to go back to main menu");
 				reader.next();
 				
@@ -90,9 +98,17 @@ public class Main {
 				
 			} else if(input.equals("3")) {
 				//Late
+				System.out.println("Late Tasks");
+				System.out.println("ID \t title \t comments \t planned \t created \t finished \t categoryID \t userId");
+				initializeConsumer();
+				
+				msg = session.createMapMessage();
+				msg.setString("credential-login", login);
+				msg.setString("credential-password", password);
+				msg.setString("command", "viewLate");
+				sender.send(msg);
 				
 				//send message then initialize consumer
-				initializeConsumer();
 				System.out.println("Input any number or letter to go back to main menu");
 				reader.next();
 				

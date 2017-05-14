@@ -44,7 +44,7 @@ public class EjbTaskService implements RemoteTaskService, LocalTaskService {
 
 	@Override
 	public List<Task> getTareasByUserIdToday(Long id) throws Exception {
-		audit.audit("getTasksByUserIdToday( " + id + " )");
+		//audit.audit("getTasksByUserIdToday( " + id + " )");
 		return new TasksListado().getTasksByUserIdToday(id);
 	}
 
@@ -55,7 +55,7 @@ public class EjbTaskService implements RemoteTaskService, LocalTaskService {
 	
 	@Override
 	public List<Task> getTareasByUserIdInbox(Long id) throws Exception {
-		audit.audit("getTasksByUserIdInbox( " + id + " )");
+		//audit.audit("getTasksByUserIdInbox( " + id + " )");
 		return new TasksListado().getTasksByUserIdInbox(id);
 	}
 	
@@ -92,6 +92,21 @@ public class EjbTaskService implements RemoteTaskService, LocalTaskService {
 	@Override
 	public void deleteTareaByUserId(Long id) throws EntityNotFoundException {
 		new TasksBaja().deleteByUserId(id);
+	}
+
+	@Override
+	public List<Task> getTareasByUserIdLate(Long id) {
+		return new TasksListado().getTasksByUserIdLate(id);
+	}
+
+	@Override
+	public List<Task> getTareasByUserIdTodayOnly(Long id) {
+		return new TasksListado().getTasksByUserIdTodayOnly(id);
+	}
+
+	@Override
+	public List<Task> getLateAndPendingTasks(Long id) {
+		return new TasksListado().getLateAndPendingTasks(id);
 	}
 
 }

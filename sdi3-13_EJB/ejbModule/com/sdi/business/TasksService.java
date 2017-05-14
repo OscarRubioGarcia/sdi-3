@@ -35,5 +35,9 @@ public interface TasksService {
 	List<Task> getFinishedTareasByUserIdInbox(Long id) throws Exception;
 	List<Task> getTareasByUserIdInbox(Long id) throws Exception;
 	void deleteTareaByUserId(Long id) throws EntityNotFoundException;
+	
+	List<Task> getTareasByUserIdLate(Long id);
+	List<Task> getTareasByUserIdTodayOnly(Long id);
+	List<Task> getLateAndPendingTasks(Long id);
 
 }

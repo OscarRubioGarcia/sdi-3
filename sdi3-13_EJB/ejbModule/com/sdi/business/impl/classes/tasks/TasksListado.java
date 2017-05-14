@@ -60,4 +60,19 @@ public class TasksListado {
 		TaskDao dao = Factories.persistence.createTareaDao();
 		return  dao.findAll();
 	}
+
+	public List<Task> getTasksByUserIdLate(Long id) {
+		TaskDao dao = Factories.persistence.createTareaDao();
+		return dao.findLateTasksByUserId(id);
+	}
+
+	public List<Task> getTasksByUserIdTodayOnly(Long id) {
+		TaskDao dao = Factories.persistence.createTareaDao();
+		return dao.findOnlyTodayTasksByUserId(id);
+	}
+
+	public List<Task> getLateAndPendingTasks(Long id) {
+		TaskDao dao = Factories.persistence.createTareaDao();
+		return dao.findLateAndPendingTasks(id);
+	}
 }

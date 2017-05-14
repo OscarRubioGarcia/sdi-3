@@ -25,6 +25,8 @@ public class User implements Serializable {
 	private Boolean isAdmin = false;
 	private UserStatus status = UserStatus.ENABLED;
 	
+	private int[] tareas = new int[4];
+	
 	public User(){
 	}
 	
@@ -70,6 +72,23 @@ public class User implements Serializable {
 	}
 
 	@XmlElement
+	/**
+	 * completadas, completadas con retraso, planificadas y no planificadas
+	 * @return
+	 */
+	public int[] getTareas() {
+		return tareas;
+	}
+
+	public User setTareas(int completadas, int completadasRetraso, int planificadas, int noPlanificadas) {
+		this.tareas[0] = completadas;
+		this.tareas[1] = completadasRetraso;
+		this.tareas[2] = planificadas;
+		this.tareas[3] = noPlanificadas;
+		return this;
+	}
+	
+	@XmlElement
 	public String getPassword() {
 		return password;
 	}
@@ -90,7 +109,8 @@ public class User implements Serializable {
 				+ ", login=" + login 
 				+ ", email=" + email 
 				+ ", password=" + password 
-				+ ", isAdmin=" + isAdmin + "]";
+				+ ", isAdmin=" + isAdmin 
+				+ ", tareas= " + tareas.toString() + "]";
 	}
 
 	@XmlElement
@@ -113,6 +133,8 @@ public class User implements Serializable {
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((tareas == null) ? 0 : tareas.hashCode());
+
 		return result;
 	}
 
@@ -151,6 +173,8 @@ public class User implements Serializable {
 		} else if (!password.equals(other.password))
 			return false;
 		if (status != other.status)
+			return false;
+		if (tareas != other.tareas)
 			return false;
 		return true;
 	}	

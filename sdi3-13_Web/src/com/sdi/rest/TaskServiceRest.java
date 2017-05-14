@@ -39,6 +39,11 @@ public interface TaskServiceRest {
 	List<Task> getTareasByUserIdFinished(@PathParam("id") Long id) throws Exception;
 	
 	@GET 
+	@Path("/LateAndPendingTasksById/{id}")
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	List<Task> getLateAndPendingTasksById(@PathParam("id") Long id) throws Exception;
+	
+	@GET 
 	@Path("/findTaskById/{id}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	Task findById(@PathParam("id") Long id) throws EntityNotFoundException;

@@ -67,4 +67,9 @@ public class TaskServiceRestImpl implements TaskServiceRest{
 		
 	}
 
+	@Override
+	public List<Task> getLateAndPendingTasksById(Long id) throws Exception {
+		return service.getLateAndPendingTasks(id);
+	}
+
 }
