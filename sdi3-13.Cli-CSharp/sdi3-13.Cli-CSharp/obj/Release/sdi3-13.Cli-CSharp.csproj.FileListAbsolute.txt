@@ -1,0 +1,8 @@
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\bin\Release\sdi3-13.Cli-CSharp.exe.config
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\bin\Release\sdi3-13.Cli-CSharp.exe
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\bin\Release\sdi3-13.Cli-CSharp.XmlSerializers.dll
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\bin\Release\sdi3-13.Cli-CSharp.pdb
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\obj\Release\sdi3-13.Cli-CSharp.csprojResolveAssemblyReference.cache
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\obj\Release\sdi3-13.Cli-CSharp.exe
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\obj\Release\sdi3-13.Cli-CSharp.pdb
+S:\work\sdi-3\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\sdi3-13.Cli-CSharp\obj\Release\sdi3-13.Cli-CSharp.XmlSerializers.dll
