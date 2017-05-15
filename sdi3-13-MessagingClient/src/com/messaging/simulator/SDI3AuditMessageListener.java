@@ -14,12 +14,21 @@ import javax.jms.MessageListener;
 				propertyValue = "queue/SDI3AuditQueue")
 	})
 public class SDI3AuditMessageListener implements MessageListener{
+	
+	String login;
+
+	public SDI3AuditMessageListener(String login) {
+		this.login = login;
+	}
 
 	@Override
 	public void onMessage(Message msg) {
 		
+		MapMessage mmsg = (MapMessage) msg;
+		
 		try {
-			processMessage(msg);
+			if(mmsg.getString("credential-login").equals(login))
+				processMessage(msg);
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}

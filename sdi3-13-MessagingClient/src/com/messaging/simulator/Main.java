@@ -144,7 +144,7 @@ public class Main {
 		Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 		
 		MessageConsumer consumer = session.createConsumer(queue);
-		consumer.setMessageListener( new SDI3AuditMessageListener() );
+		consumer.setMessageListener( new SDI3AuditMessageListener(login) );
 		
 		conn.start();
 		
